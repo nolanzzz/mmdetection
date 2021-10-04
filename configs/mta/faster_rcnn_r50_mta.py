@@ -181,4 +181,5 @@ optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 
 # runtime settings
 total_epochs = 3
+load_from = None
 resume_from = None
