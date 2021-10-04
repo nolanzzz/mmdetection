@@ -629,6 +629,7 @@ class ResNet(BaseModule):
                 param.requires_grad = False
 
     def forward(self, x):
+        x = x.float()
         """Forward function."""
         if self.deep_stem:
             x = self.stem(x)
