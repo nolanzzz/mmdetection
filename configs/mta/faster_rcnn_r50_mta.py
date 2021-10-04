@@ -159,3 +159,4 @@ data = dict(
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric='bbox')
 log_level = 'INFO'
+workflow = [('train', 1)]
