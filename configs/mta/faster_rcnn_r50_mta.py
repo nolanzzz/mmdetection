@@ -133,7 +133,7 @@ test_pipeline = [
         ])
 ]
 # dataset_type = 'GtaDataset'
-dataset_type = 'COCODataset'
+dataset_type = 'CocoDataset'
 classes = ('pedestrian',)
 data_root = '/u40/zhanr110/mmdetection/data/MTA_short/'
 data = dict(
