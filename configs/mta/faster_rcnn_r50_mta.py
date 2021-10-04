@@ -185,4 +185,6 @@ dist_params = dict(backend='nccl')
 load_from = None
 resume_from = None
 
+runner = dict(type='EpochBasedRunner', max_epochs=total_epochs)
+
 work_dir = './work_dirs/faster_rcnn_r50_mta'
