@@ -10,7 +10,8 @@ model = dict(
         # norm_cfg=dict(type='BN', requires_grad=True),
         # norm_eval=True,
         style='pytorch',
-        init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet50')),
+        # init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet50')),
+        init_cfg=dict(type='Pretrained', checkpoint='/u40/zhanr110/mmdetection/checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth')),
     neck=dict(
         type='FPN',
         in_channels=[256, 512, 1024, 2048],
@@ -44,7 +45,7 @@ model = dict(
             in_channels=256,
             fc_out_channels=1024,
             roi_feat_size=7,
-            num_classes=2,
+            num_classes=1,
             bbox_coder=dict(
                 type='DeltaXYWHBBoxCoder',
                 target_means=[0., 0., 0., 0.],
@@ -133,25 +134,26 @@ test_pipeline = [
 ]
 dataset_type = 'GtaDataset'
 classes = ('pedestrian',)
+data_root = '/u40/zhanr110/mmdetection/data/MTA_short/'
 data = dict(
     imgs_per_gpu=2,
     workers_per_gpu=2,
     train=dict(
             type=dataset_type,
-            ann_file=data_root + 'train/coords.json',
-            img_prefix=data_root + 'train/images/',
+            ann_file=data_root + 'train/annotations_coco.json',
+            img_prefix=data_root + 'train/img1/',
             classes=classes,
             pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file=data_root + 'test/coords.json',
-        img_prefix=data_root + 'test/images/',
+        ann_file=data_root + 'test/annotations_coco.json',
+        img_prefix=data_root + 'test/img1/',
         classes=classes,
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + 'test/coords.json',
-        img_prefix=data_root + 'test/images/',
+        ann_file=data_root + 'test/annotations_coco.json',
+        img_prefix=data_root + 'test/img1/',
         classes=classes,
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric='bbox')
