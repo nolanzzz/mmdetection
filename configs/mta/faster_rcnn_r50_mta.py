@@ -160,6 +160,13 @@ data = dict(
 evaluation = dict(interval=1, metric='bbox')
 log_level = 'INFO'
 workflow = [('train', 1)]
+# learning policy
+lr_config = dict(
+    policy='step',
+    warmup='linear',
+    warmup_iters=500,
+    warmup_ratio=1.0 / 3,
+    step=[8, 11])
 checkpoint_config = dict(interval=1)
 
 # optimizer
