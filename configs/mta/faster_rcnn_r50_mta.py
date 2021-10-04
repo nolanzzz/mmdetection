@@ -183,3 +183,5 @@ optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 total_epochs = 3
 load_from = None
 resume_from = None
+
+work_dir = './work_dirs/faster_rcnn_r50_mta'
