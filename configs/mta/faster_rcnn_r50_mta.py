@@ -112,7 +112,7 @@ train_pipeline = [
     dict(type='LoadAnnotations', with_bbox=True),
     dict(type='Resize', img_scale=(1920, 1080), keep_ratio=True),
     dict(type='RandomFlip', flip_ratio=0.5),
-    # dict(type='Normalize', **img_norm_cfg),
+    dict(type='Normalize', **img_norm_cfg),
     dict(type='Pad', size_divisor=32),
     dict(type='DefaultFormatBundle'),
     dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels']),
@@ -126,7 +126,7 @@ test_pipeline = [
         transforms=[
             dict(type='Resize', keep_ratio=True),
             dict(type='RandomFlip'),
-            # dict(type='Normalize', **img_norm_cfg),
+            dict(type='Normalize', **img_norm_cfg),
             dict(type='Pad', size_divisor=32),
             dict(type='ImageToTensor', keys=['img']),
             dict(type='Collect', keys=['img']),
@@ -136,6 +136,8 @@ test_pipeline = [
 dataset_type = 'CocoDataset'
 classes = ('pedestrian',)
 data_root = '/u40/zhanr110/mmdetection/data/MTA_short/'
+img_norm_cfg = dict(
+    mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 data = dict(
     samples_per_gpu=2,
     workers_per_gpu=2,
