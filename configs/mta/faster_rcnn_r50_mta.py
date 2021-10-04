@@ -160,3 +160,4 @@ data = dict(
 evaluation = dict(interval=1, metric='bbox')
 log_level = 'INFO'
 workflow = [('train', 1)]
+checkpoint_config = dict(interval=1)
