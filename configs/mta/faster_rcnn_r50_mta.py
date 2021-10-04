@@ -132,7 +132,8 @@ test_pipeline = [
             dict(type='Collect', keys=['img']),
         ])
 ]
-dataset_type = 'GtaDataset'
+# dataset_type = 'GtaDataset'
+dataset_type = 'COCODataset'
 classes = ('pedestrian',)
 data_root = '/u40/zhanr110/mmdetection/data/MTA_short/'
 data = dict(
