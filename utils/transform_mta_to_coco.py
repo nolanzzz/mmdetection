@@ -58,3 +58,6 @@ coco_format_json = dict(
 
 with open(out_filename, 'w') as f:
     json.dump(coco_format_json, f)
+
+# use this command to transform filename first
+# for f in * ; do mv -- "$f" "cam_0_$f" ; done
